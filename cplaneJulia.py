@@ -57,22 +57,10 @@ class JuliaPlane(cplanenp.ComplexPlaneNP):
         plt.xticks(np.linspace(-2,2,5, endpoint=True))
         plt.ylim(-2.0, 2.0)
         plt.yticks(np.linspace(-2,2,5, endpoint=True))
-        #plt.xticks(np.linspace(self.xmin,self.xmax,(self.xmax-self.xmin)+1, endpoint=True))
-        #plt.yticks(np.linspace(self.xmin,self.xmax,(self.ymax-self.ymin)+1, endpoint=True))
-
-
-        # Setting the axis so it lies in the middle of the image
-        # ax= plt.gca() #getting current axis
-        # ax.spines['right'].set_color('none')
-        # ax.spines['top'].set_color('none')
-        # ax.xaxis.set_ticks_position('bottom')
-        # ax.spines['bottom'].set_position(('data',self.xlen/2))
-        # ax.yaxis.set_ticks_position('left')
-        # ax.spines['left'].set_position(('data',self.ylen/2))
 
         plt.show()
 
-    def set_f(self, f=-1.037 + 0.17j):
+    def set_f(self, c=-1.037 + 0.17j):
         """This function applies a new function to be applied to the grid's values and recreates the grid
         This is a re-defined function of the cplanenp class' set_f function.
         Args:
@@ -81,7 +69,7 @@ class JuliaPlane(cplanenp.ComplexPlaneNP):
         This function sets a new value to the class' function variable with the given parameter, calls
         the Julia class to transform the function and then recreates the grid by calling the refresh() function.
         """
-        self.f = np.vectorize(self.julia(f))
+        self.f = self.julia(c)
         self.refresh()
 
 

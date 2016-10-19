@@ -70,30 +70,16 @@ class ComplexPlaneNP(ab.AbsComplexPlane):
         It will also take the set value of f and apply the function upon creation of the plane,
         using numpy and pandas to create the plane and give it labels.
         """
-        # Plane creationg using numpy by first using linspace to get all the x and y values between their respective min and max and the points inbetween by their length values.
+        # Plane creating using numpy by first using linspace to get all the x and y values between their respective min and max and the points inbetween by their length values.
         # Then uing meshgrid to combine all the points together and using the formula x + y*1j to vectorize the entire grid.
         a = np.linspace(self.xmin, self.xmax, self.xlen+1)
         b = np.linspace(self.ymin, self.ymax, self.ylen+1)
-        y, x = np.meshgrid(b,a)
+        x, y = np.meshgrid(a,b)
         z = x + y*1j
-        z = self.f(z)
-
-        # Creating a list of each x and y value to be used in our pandas implementation for column and row names.
-        x_val = []
-        y_val = []
-        inc_x = (self.xmax - self.xmin) / (self.xlen)
-        inc_y = (self.ymax - self.ymin) / (self.ylen)
-        for i in range(self.xlen + 1):
-            x_val.append(self.xmin + (i * inc_x) )
-        for j in range(self.ylen + 1):
-            y_val.append(str(self.ymin + (j * inc_y)) + "*j")
 
         # Using pandas Dataframe to add x and y value labels to the grid, then transposing the grid so the values are ordered to resemble the number plane.
-        f = pd.DataFrame(z, x_val, y_val)
-        self.plane = f.T
-
-        # For testing purposes, print out the plane to check if everything works and the values are correct.
-        # print(self.plane)
+        self.plane = pd.DataFrame(self.f(z), a, b)
+        
 
 
     def zoom(self, xmin, xmax, xlen, ymin, ymax, ylen):
@@ -120,7 +106,7 @@ class ComplexPlaneNP(ab.AbsComplexPlane):
 
         self.refresh()
 
-    def set_f(self, f):
+    def set_f(self, f, c):
         """This function applies a new function to be applied to the grid's values and recreates the grid
         Args:
             param1 (complex parameter)  : a complex parameter to transform the plane
@@ -130,8 +116,7 @@ class ComplexPlaneNP(ab.AbsComplexPlane):
         """
         self.f = f
         self.refresh()
-        
-   
+
     def julia(self, c, max=100):
         """Julia
         This module has a method called Julia, which takes in the following arguments:
