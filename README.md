@@ -1,8 +1,8 @@
 # CS510 CW 8
 
-**Author(s):** _\<your name(s)\>_
+**Author(s):** _Simrath Ratra, Andrew Nguyen_
 
-[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-08-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-08-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-08-datacats.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-08-datacats)
 
 **Due date:** 2016/10/25
 
@@ -31,7 +31,7 @@ def julia(z):
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**This assignment was a nice break for after finishing our midterm assignment, and we liked the introduction to numba to optimize and speed up our code. It was good to learn more about the underlying structures of Python, and more about its strengths and weaknesses. Although we will not be spending more than one class week on Julia, it was still interesting to learn another language, and also practice with it a bit as well. **
 
 ## Honor Pledge
 
@@ -42,4 +42,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**YOURNAME**
+**Simrath Ratra, Andrew Nguyen**
